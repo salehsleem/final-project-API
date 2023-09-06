@@ -1,7 +1,6 @@
 gunicorn==20.0.4
 Flask~=2.3.3
 tensorflow~=2.13.0
-opencv-python
 numpy~=1.24.3
 googletrans==4.0.0-rc1
 pandas~=2.1.0
