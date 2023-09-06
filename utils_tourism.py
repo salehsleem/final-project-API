@@ -1,16 +1,15 @@
 # utils_tourism.py
-import cv2
+from PIL import Image
 import numpy as np
 from googletrans import Translator
 import pandas as pd
 
 
 def preprocess_image(image_path):
-    img = cv2.imread(image_path)
-    img = cv2.resize(img, (224, 224))  # Resize the image to match the model input size
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB
-    img = img / 255.0  # Normalize pixel values
-    return np.expand_dims(img, axis=0)
+    image = Image.open(image_path)
+    image = image.resize((224, 224))  # Resize to the model's input size
+    image = np.array(image) / 255.0
+    return np.expand_dims(image, axis=0)
 
 
 def get_tourism_prediction(processed_image, model, data_dict, class_names, lang):
